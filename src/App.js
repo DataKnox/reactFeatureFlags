@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-
+import { Flags } from 'react-feature-flags';
 function App() {
   return (
     <div className="App">
@@ -17,6 +17,10 @@ function App() {
         >
           Learn React
         </a>
+        <Flags authorizedFlags={['adminOnly']}
+          renderOn={() => <h1>For admin</h1>}
+          renderOff={() => <h1>For customers</h1>}
+        />
       </header>
     </div>
   );

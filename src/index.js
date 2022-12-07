@@ -3,11 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { FlagsProvider } from 'react-feature-flags';
 
+const flags = [
+  { name: 'vipOnly', isActive: false },
+  { name: 'adminOnly', isActive: true },
+  { name: 'customerOnly', isActive: false },
+];
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <FlagsProvider value={flags}>
     <App />
+    </FlagsProvider>,
   </React.StrictMode>
 );
 
